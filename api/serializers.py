@@ -13,7 +13,7 @@ class AttractionSerializer(serializers.ModelSerializer):
     attr_types = serializers.StringRelatedField(many=True)
     location = serializers.StringRelatedField(many=False)
     image_url = serializers.SerializerMethodField()
-    def get_image_url(selfself, obj):
+    def get_image_url(self, obj): #именно такое название функции должно быть, с get_ + имя поля
         if obj.image_url:
             return settings.PATH_TO_IMAGES + obj.image_url.url
 

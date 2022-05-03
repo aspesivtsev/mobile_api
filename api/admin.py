@@ -2,7 +2,12 @@ from django.contrib import admin
 from .models import Attraction, AttractionType, ParkLocation
 
 class AttractionAdmin(admin.ModelAdmin):
-    pass
+    list_display = ['title', 'work_time', 'is_active', 'is_working', 'sorting', 'wait_time']
+    list_editable = ['work_time', 'is_active', 'is_working', 'sorting', 'wait_time']
+    list_filter = ['location']  # left filters in admin page
+    search_fields = ['title', ]
+    list_per_page = 50
+    #prepopulated_fields = {'slug': ('title',)}
 
 admin.site.register(Attraction, AttractionAdmin)
 
