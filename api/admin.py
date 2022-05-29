@@ -8,17 +8,14 @@ class AttractionAdmin(admin.ModelAdmin):
     search_fields = ['title', ]
     list_per_page = 50
     #prepopulated_fields = {'slug': ('title',)}
-
 admin.site.register(Attraction, AttractionAdmin)
 
 
 class AttractionTypeAdmin(admin.ModelAdmin):
     pass
-
 admin.site.register(AttractionType, AttractionTypeAdmin)
 
 
 class ParkLocationAdmin(admin.ModelAdmin):
     pass
-
 admin.site.register(ParkLocation, ParkLocationAdmin)

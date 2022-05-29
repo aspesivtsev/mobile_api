@@ -26,9 +26,22 @@ SECRET_KEY = 'django-insecure-2yj*!+y88jphx)+7r@ow^e(fm38adsw6a6b@)z!cq1hl7@-!sp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1',]
+#ALLOWED_HOSTS = ['*']
 
-
+#CORS_ALLOW_HEADERS = "access-control-allow-origin"
+CORS_ALLOW_HEADERS = [
+    "accept",
+    "accept-encoding",
+    "authorization",
+    "content-type",
+    "dnt",
+    "origin",
+    "user-agent",
+    "x-csrftoken",
+    "x-requested-with",
+    "access-control-allow-origin",
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,11 +55,13 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'api',
     'pytest',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,6 +141,13 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
     )
 
+#CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOW_HEADERS = '*'
+CORS_ALLOWED_ORIGINS = ['http://localhost:5555', 'http://127.0.0.1:5555', 'http://127.0.0.1:8000', 'http://localhost:8000']
+
+
+
+
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -134,12 +156,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#this setting is to make debugtoolbar work correctly
 INTERNAL_IPS = ['127.0.0.1',]
 
 #settings for getting full unc path to
 PATH_TO_IMAGES = 'http://127.0.0.1:8000/static'
+
 
 
 #test user/password: anatoly/django1234
