@@ -49,6 +49,8 @@ class Attraction(models.Model):
     def get_full_img_path(self):
         return reverse('api:attractions', args=[self.image_url].url)
 
+
+
     class Meta:
         ordering = ('sorting', 'title')
         verbose_name = 'Аттракцион'

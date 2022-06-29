@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Attraction, AttractionType, ParkLocation
 
 class AttractionAdmin(admin.ModelAdmin):
-    list_display = ['title',  'is_active', 'is_working', 'sorting', 'wait_time', 'work_time']
+    list_display = ['title',  'is_active', 'is_working', 'sorting', 'wait_time', 'work_time', 'location']
     list_editable = ['is_active', 'is_working', 'sorting', 'wait_time', 'work_time']
     list_filter = ['location']  # left filters in admin page
     search_fields = ['title', ]
